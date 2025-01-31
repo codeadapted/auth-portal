@@ -1,0 +1,33 @@
+// Import globals
+@import 'variables';
+@import 'typography';
+@import 'mixins';
+
+// Import Page styles
+@import '../pages/HomePage/HomePage.scss';
+@import '../pages/Login/Login.scss';
+@import '../pages/NotFoundPage/NotFoundPage.scss';
+
+// Define CSS variables based on SCSS variables
+:root {
+  --accent-color: #{$accent-color};
+  --background-color: #{$background-color};
+  --background-color-2: #{$background-color-2};
+  --hover-background-color: #{$hover-background-color};
+  --text-color: #{$text-color};
+  --text-grey: #{$text-grey};
+  --text-grey-2: #{$text-grey-2};
+}
+
+body {
+  background-color: var(--background-color-2);
+  color: var(--text-color);
+  font-family: $body-font;
+  margin: 0;
+  #root {
+    display: flex;
+  }
+  .app-container {
+    width: 100%;
+  }
+}

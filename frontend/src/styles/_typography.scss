@@ -1,0 +1,22 @@
+$body-font: 'Avenir Next', Helvetica, sans-serif;
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('../assets/fonts/AvenirNext-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('../assets/fonts/AvenirNext-DemiBold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('../assets/fonts/AvenirNext-Medium.woff2') format('woff2');
+    font-weight: 500;
+}
+  
