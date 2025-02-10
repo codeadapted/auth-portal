@@ -20,6 +20,7 @@ app.use( cookieParser() );
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // @3X95gJTJZUeVSfY
+// #nOhq7T9j!GO^cBQ
 
 // =========================
 // HELPER FUNCTIONS
@@ -131,6 +132,52 @@ app.get( '/api/verify-token', (req, res) => {
 
     } catch ( err ) {
         return res.status( 401 ).json({ error: 'Invalid or expired token' });
+    }
+
+});
+
+/**
+ * GET /api/verify-token
+ * Endpoint to validate auth token.
+ * This will return a success/error message.
+ */
+app.post( '/api/user/create', (req, res) => {
+
+    // Set param and query variables
+    const { username, password } = req.body;
+
+    // Path to the enrichment counts JSON file
+    const usersAuthPath = path.join( __dirname, '/authentication.json' );
+  
+    try {
+
+        // If the file doesn't exist, skip read
+        if( !fs.existsSync( usersAuthPath ) ) {
+            res.status( 500 ).json({ error: 'Unable to read directory' });
+        }
+
+        // If the file exists, read and parse the data
+        const authData = await fs.promises.readFile( usersAuthPath, 'utf-8' );
+        const auth = JSON.parse( authData );
+
+        // Check if user exists and password matches
+        if ( !auth[username] ) {
+
+            // Hash password
+            const hashedPassword = await hashPassword( password );
+
+            console.log( hashedPassword );
+
+            // Return user authentication error
+            return res.json({ created: true });
+
+        } else {
+            return res.json({ created: false });
+        }
+
+    } catch ( err ) {
+        console.error( 'Error reading the directory:', err );
+        res.status( 500 ).json({ error: 'Unable to read directory' });
     }
 
 });

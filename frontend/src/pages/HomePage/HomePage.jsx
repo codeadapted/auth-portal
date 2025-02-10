@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth } from '../../components/Login/AuthContext';
 
 /**
  * HomePage Component
@@ -7,11 +8,12 @@ import React from 'react';
  * Displays the Enrichment Initiator component.
  */
 const HomePage = () => {
+    const { logout } = useAuth();
     return (
         <div className="home-page">
 
-            {/* Enrichment Initiator */}
-            Home
+            {/* Logout button */}
+            <div className="logout-button" onClick={() => logout()}>Logout</div>
         
         </div>
     );

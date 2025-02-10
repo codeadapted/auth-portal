@@ -27,6 +27,9 @@
                 font-size: 15px;
                 font-weight: 400;
                 color: $text-color;
+                &.error {
+                    color: $error-color;
+                }
             }
             form {
                 background: $background-color;

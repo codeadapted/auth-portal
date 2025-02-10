@@ -9,6 +9,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useAuth();
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -24,12 +25,18 @@ const Login = () => {
       // Check if user authenticated successfully
       if ( response.authenticated ) {
 
+        // Reset error state
+        setError( false );
+
         // Store token using the login function from AuthContext
         login( response.token );
         navigate( '/' ); // Redirect after successful login
 
       } else {
-        alert( 'Invalid username or password' );
+
+        // Set error state
+        setError( true );
+
       }
 
     } catch ( error ) {
@@ -49,6 +56,9 @@ const Login = () => {
             </div>
             <div className="login-wrapper">
               <h3>Enter your login credentials below.</h3>
+              {error && (
+                <h3 className="error">Invalid username or password.</h3>
+              )}
               <input
                 type="text"
                 placeholder="Username"

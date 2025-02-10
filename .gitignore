@@ -16,6 +16,6 @@ yarn-error.log*
 
 # Files
 .DS_Store
-backend/graph_data
+authentication.json
 queries
 .vscode

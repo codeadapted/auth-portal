@@ -4,4 +4,26 @@
     justify-content: center;
     align-items: center;
     background: $background-color-2;
+    .logout-button {
+        border: 1px solid $text-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-size: 14px;
+        font-weight: 400;
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding: 0px 12px;
+        transition: opacity 0.2s ease-in-out;
+        line-height: 1;
+        height: 34px;
+        width: fit-content;
+        color: $text-color;
+        cursor: pointer;
+        opacity: 0.5;
+        &:hover {
+            opacity: 1;
+        }
+    }
 }
