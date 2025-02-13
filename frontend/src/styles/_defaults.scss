@@ -1,0 +1,96 @@
+.app-container {
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 15px;
+        font-weight: 400;
+        color: $text-color;
+        &.error {
+            color: $error-color;
+        }
+    }
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 2rem;
+        h2 {
+            margin: 0;
+            color: $text-color;
+            line-height: 1.1;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+    }
+    .bottom-buttons {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        gap: 1rem;
+        .btn {
+            width: fit-content;
+        }
+    }
+    .btn {
+        background: none;
+        border: 1px solid $text-color;
+        appearance: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: normal;
+        font-stretch: normal;
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding: 0px 12px;
+        white-space: nowrap;
+        transition: opacity 0.2s ease-in-out;
+        line-height: 1;
+        height: 34px;
+        width: 100%;
+        color: $text-color;
+        cursor: pointer;
+        opacity: 0.5;
+        align-self: flex-end;
+        svg {
+            width: 11px;
+            height: 11px;
+            .transitioned-group {
+                fill: $text-color;
+            }
+        }
+        &:hover {
+            opacity: 1;
+        }
+    }
+    input, select {
+        background: transparent;
+        color: $text-color;
+        font-weight: 400;
+        border: none;
+        font-family: $body-font;
+        margin: 0;
+        width: 100%;
+        outline: none;
+        font-size: 16px !important;
+        text-align: center;
+        background: $hover-background-color;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        border-radius: 0.5rem;
+        &::placeholder {
+            color: rgba($text-color, 0.5);
+        }
+    }
+    .success {
+        text-align: center;
+        width: 100%;
+    }
+}

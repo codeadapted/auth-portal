@@ -3,7 +3,6 @@ import { useAuth } from '../../components/Login/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { authenticateUser } from '../../utils/dashboardUtils';
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
-import { ReactComponent as RightArrow } from '../../assets/img/arrow-right.svg';
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -29,7 +28,7 @@ const Login = () => {
         setError( false );
 
         // Store token using the login function from AuthContext
-        login( response.token );
+        login( response.token, username );
         navigate( '/' ); // Redirect after successful login
 
       } else {
@@ -71,7 +70,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword( e.target.value )}
               />
-              <button type="submit">Login<RightArrow /></button>
+              <button className="login-btn btn" type="submit">Login</button>
             </div>
           </form>
         </div>
