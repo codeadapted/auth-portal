@@ -90,7 +90,7 @@ export const verifyRole = async () => {
     // Define the API URL, allowing for environment-specific flexibility
     const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/';
 
-    // Get authentication token from sessionStorage
+    // Get username from sessionStorage
     const username = sessionStorage.getItem( 'username' );
 
     // Send request to endpoint
@@ -143,7 +143,44 @@ export const createUser = async ( username, password, role ) => {
         // Parse the JSON response
         const result = await response.json();
 
-        console.log( result );
+        // Return fetched data
+        return result;
+        
+    } catch ( error ) {
+        console.log( 'Error creating user: ', error );
+        return { created: false };
+    }
+
+};
+
+/**
+ * Delete user.
+ * @returns {Object} Request result.
+ * @throws {Error} Throws an error if the HTTP request fails.
+ */
+export const deleteUser = async ( username ) => {
+
+    // Define the API URL, allowing for environment-specific flexibility
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/';
+
+    try {
+
+        // Authentication request
+        const response = await fetch( `${API_URL}api/user/delete`, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username })
+        });
+        
+        // Check if the response is successful
+        if ( !response.ok ) {
+            throw new Error( `HTTP error! status: ${response.status}` );
+        }
+
+        // Parse the JSON response
+        const result = await response.json();
 
         // Return fetched data
         return result;

@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import { getUserList, changeUserPassword } from '../../utils/dashboardUtils';
+import { getUserList, changeUserPassword, deleteUser } from '../../utils/dashboardUtils';
 import { useAuth } from '../../components/Login/AuthContext';
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
 
 const UserManager = () => {
+
+    // Get AuthContext
     const { logout } = useAuth();
+
+    // Get navigation object
     const navigate = useNavigate();
+
+    // State variables
     const [usernameUpdate, setUsernameUpdate] = useState( '' );
     const [password, setPassword] = useState( '' );
     const [users, setUsers] = useState( [] );
@@ -16,6 +22,7 @@ const UserManager = () => {
     const [deleteSuccess, setDeleteSuccess] = useState( null );
     const [deleteConfirmation, setDeleteConfirmation] = useState( null );
 
+    // Load users
     useEffect(() => {
         getUserList()
             .then( setUsers )
@@ -23,11 +30,13 @@ const UserManager = () => {
             .finally( () => setLoading( false ) );
     }, []);
 
+    // Handle the update password click
     const handleUpdatePasswordClick = async ( username ) => {
         setUsernameUpdate( username );
         setPassword( '' );
     };
 
+    // Handle the password update
     const handlePasswordUpdate = async ( e, username ) => {
         
         // Prevent default functionality
@@ -52,13 +61,15 @@ const UserManager = () => {
 
     };
 
+    // Handle the delete user
     const handleDeleteUser = async ( username, confirmation = false ) => {
 
-        if( deleteConfirmation && !confirmation ) return setDeleteConfirmation( null );
+        if( deleteConfirmation === username && !confirmation ) return setDeleteConfirmation( null );
 
         if( !confirmation ) return setDeleteConfirmation( username );
 
         try {
+            await deleteUser( username );
             setDeleteConfirmation( null );
             setDeleteSuccess( username );
             setTimeout(() => { 
@@ -77,6 +88,7 @@ const UserManager = () => {
 
     // R3cr1Tr2025
 
+    // Render the component
     return (
         <div className="user-manager">
             <div className="inner-wrapper">
@@ -134,7 +146,7 @@ const UserManager = () => {
 
             {/* Bottom Buttons */}
             <div className="bottom-buttons">
-                <div className="admin-home-btn btn" onClick={() => navigate( '/' )}>Admin Home</div>
+                <div className="admin-home-btn btn" onClick={() => navigate( '/admin' )}>Admin Home</div>
                 <div className="logout-button btn" onClick={() => logout()}>Logout</div>
             </div>
 

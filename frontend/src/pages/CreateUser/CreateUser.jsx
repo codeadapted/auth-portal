@@ -5,8 +5,14 @@ import { useAuth } from '../../components/Login/AuthContext';
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
 
 const CreateUser = () => {
+
+    // Get AuthContext
     const { logout } = useAuth();
+
+    // Get navigation object
     const navigate = useNavigate();
+
+    // State variables
     const [username, setUsername] = useState( '' );
     const [password, setPassword] = useState( '' );
     const [selectedRole, setSelectedRole] = useState( '' );
@@ -22,6 +28,7 @@ const CreateUser = () => {
 
     };
 
+    // Handle the form submission
     const handleSubmit = async (e) => {
 
         // Prevent default functionality
@@ -52,6 +59,7 @@ const CreateUser = () => {
 
     };
 
+    // Render the component
     return (
         <div className="create-user-form">
             <div className="center-text">
@@ -97,7 +105,7 @@ const CreateUser = () => {
 
                 {/* Bottom Buttons */}
                 <div className="bottom-buttons">
-                    <div className="admin-home-btn btn" onClick={() => navigate( '/' )}>Admin Home</div>
+                    <div className="admin-home-btn btn" onClick={() => navigate( '/admin' )}>Admin Home</div>
                     <div className="logout-button btn" onClick={() => logout()}>Logout</div>
                 </div>
 

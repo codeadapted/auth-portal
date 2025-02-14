@@ -7,29 +7,36 @@ import { ReactComponent as Logo } from '../../assets/img/logo.svg';
  * HomePage Component
  * 
  * Represents the main landing page of the application.
- * Displays the Enrichment Initiator component.
+ * Displays the Portal Home component.
  */
 const HomePage = () => {
+
+    // Get AuthContext
     const { logout, isAdmin } = useAuth();
+
+    // Get navigation object
     const navigate = useNavigate();
+
+    // Render the component
     return (
         <div className="home-page">
-            <div className="buttons">
-
+            <div className="inner-wrapper">
+                
                 <div className="logo">
                     <Logo />
-                    <h2>Admin<br/>Home</h2>
+                    <h2>Home</h2>
                 </div>
 
-                { isAdmin && (
-                    <div className="create-user-btn" onClick={() => navigate( '/create-user' )}>Create New User</div>
-                ) }
-                { isAdmin && (
-                    <div className="user-manager-btn" onClick={() => navigate( '/user-manager' )}>Manage Users</div>
-                ) }
+                <div>Hello World!</div>
 
-                {/* Logout button */}
-                <div className="logout-button" onClick={() => logout()}>Logout</div>
+                {/* Bottom Buttons */}
+                <div className="bottom-buttons">
+                    {isAdmin && (
+                        <div className="admin-home-btn btn" onClick={() => navigate( '/admin' )}>Admin Home</div>
+                    )}
+                    <div className="logout-button btn" onClick={() => logout()}>Logout</div>
+                </div>
+
             </div>
         </div>
     );
