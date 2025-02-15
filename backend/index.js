@@ -50,17 +50,6 @@ const hashPassword = async ( plainPassword ) => {
     return hashedPassword;
 };
 
-/**
- * Generate a random secure password with at least 16 characters
- * @param {string} length - The password length.
- * @returns {string} The secure password.
- */
-const generateSecurePassword = ( length = 16 ) => {
-    return crypto.randomBytes( length ).toString( 'base64' ) // Base64 encoding
-        .replace(/[^a-zA-Z0-9]/g, '') // Remove special characters
-        .slice( 0, length ); // Ensure exact length
-};
-
 // =========================
 // API ROUTES
 // =========================
@@ -122,7 +111,7 @@ app.post( '/api/user/auth', async ( req, res ) => {
  * Endpoint to validate auth token.
  * This will return a success/error message.
  */
-app.get( '/api/verify-token', (req, res) => {
+app.get( '/api/user/verify-token', (req, res) => {
 
     // Get the token from the Authorization header
     const token = req.headers['authorization']?.split(' ')[1]; // Expecting format: "Bearer <token>"
@@ -350,15 +339,6 @@ app.post( '/api/user/update-password', async (req, res) => {
         res.status( 500 ).json({ error: 'Unable to read directory' });
     }
 
-});
-
-/**
- * GET /api/auth-portal
- * Endpoint to get auth portal code.
- * This will return a success/error message.
- */
-app.get( '/api/auth-portal', (req, res) => {
-    res.sendFile( path.join( __dirname, '../frontend/build', 'index.html' ) );
 });
 
 // =========================

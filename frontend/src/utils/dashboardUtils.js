@@ -59,7 +59,7 @@ export const verifyToken = async () => {
     const token = sessionStorage.getItem( 'authToken' );
 
     // Send request to endpoint
-    const response = await fetch( `${API_URL}api/verify-token`, {
+    const response = await fetch( `${API_URL}api/user/verify-token`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
