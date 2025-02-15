@@ -1,10 +1,10 @@
-.home-page {
+.portal-home-page {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background: $background-color-2;
-    .inner-wrapper {
+    .buttons {
         max-width: 450px;
         width: 100%;
         display: flex;
@@ -20,4 +20,3 @@
         border-radius: 1rem;
     }
 }
-// Add Home Page CSS or SCSS here
