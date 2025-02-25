@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import { getUserList, changeUserPassword, deleteUser } from '../../utils/dashboardUtils';
+import { getUserList, changeUserPassword, deleteUser } from '../../utils/adminUtils';
 import { useAuth } from '../../components/Login/AuthContext';
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
 
