@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from '../../components/Login/AuthContext';
-import { authenticateUser } from '../../utils/dashboardUtils';
+import { authenticateUser } from '../../utils/authUtils';
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
 
 const Login = () => {
