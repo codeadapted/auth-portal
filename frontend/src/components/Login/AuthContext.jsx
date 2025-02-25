@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect, useCallback } from "react";
-import { verifyToken, verifyRole } from '../../utils/dashboardUtils';
+import { verifyToken, verifyRole } from '../../utils/authUtils';
 import { useNavigate } from 'react-router-dom';
 
 // Create the authentication context
@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }) => {
             const check = await verifyRole();
 
             // Check if the user is an admin
-            setIsAdmin( check.role === 'admin' );
+            setIsAdmin( check?.role === 'admin' );
 
             // If the user is an admin,
             return check.role;

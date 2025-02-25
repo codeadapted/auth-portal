@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { createUser } from '../../utils/dashboardUtils';
+import { createUser } from '../../utils/adminUtils';
 import { useAuth } from '../../components/Login/AuthContext';
 import { ReactComponent as Logo } from '../../assets/img/logo.svg';
 
