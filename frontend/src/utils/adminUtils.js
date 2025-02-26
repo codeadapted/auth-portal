@@ -1,6 +1,3 @@
-// Required modules
-require( 'dotenv' ).config();
-
 // Define the API URL, allowing for environment-specific flexibility
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
 
