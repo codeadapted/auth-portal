@@ -1,3 +1,6 @@
+// Define the API URL, allowing for environment-specific flexibility
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+
 /**
  * Create new user.
  * @returns {Object} Request result.
@@ -5,11 +8,8 @@
  */
 export const createUser = async ( username, password, role ) => {
 
-    // Define the API URL, allowing for environment-specific flexibility
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/';
-
     // Authentication request
-    const response = await fetch( `${API_URL}api/admin/user/create`, {
+    const response = await fetch( `${API_URL}/admin/user/create`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
@@ -37,13 +37,10 @@ export const createUser = async ( username, password, role ) => {
  */
 export const deleteUser = async ( username ) => {
 
-    // Define the API URL, allowing for environment-specific flexibility
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/';
-
     try {
 
         // Authentication request
-        const response = await fetch( `${API_URL}api/admin/user/delete`, {
+        const response = await fetch( `${API_URL}/admin/user/delete`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -76,13 +73,10 @@ export const deleteUser = async ( username ) => {
 */
 export const getUserList = async () => {
 
-   // Define the API URL, allowing for environment-specific flexibility
-   const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/';
-
    try {
 
         // Authentication request
-        const response = await fetch( `${API_URL}api/admin/user/list`, {
+        const response = await fetch( `${API_URL}/admin/user/list`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -115,14 +109,11 @@ export const getUserList = async () => {
 * @throws {Error} Throws an error if the HTTP request fails.
 */
 export const changeUserPassword = async ( username, password ) => {
-
-    // Define the API URL, allowing for environment-specific flexibility
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/';
  
     try {
  
         // Authentication request
-        const response = await fetch( `${API_URL}api/admin/user/update-password`, {
+        const response = await fetch( `${API_URL}/admin/user/update-password`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

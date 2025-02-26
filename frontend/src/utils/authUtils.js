@@ -1,3 +1,6 @@
+// Define the API URL, allowing for environment-specific flexibility
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+
 /**
  * Send authentication request to API endpoint.
  * @param {string} username - The inputted username.
@@ -7,13 +10,10 @@
  */
 export const authenticateUser = async ( username, password ) => {
 
-    // Define the API URL, allowing for environment-specific flexibility
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/';
-
     try {
 
         // Authentication request
-        const response = await fetch( `${API_URL}api/auth/user`, {
+        const response = await fetch( `${API_URL}/auth/user`, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -46,14 +46,11 @@ export const authenticateUser = async ( username, password ) => {
  */
 export const verifyToken = async () => {
 
-    // Define the API URL, allowing for environment-specific flexibility
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/';
-
     // Get authentication token from sessionStorage
     const token = sessionStorage.getItem( 'authToken' );
 
     // Send request to endpoint
-    const response = await fetch( `${API_URL}api/auth/verify-token`, {
+    const response = await fetch( `${API_URL}/auth/verify-token`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -81,14 +78,11 @@ export const verifyToken = async () => {
  */
 export const verifyRole = async () => {
 
-    // Define the API URL, allowing for environment-specific flexibility
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/';
-
     // Get username from sessionStorage
     const username = sessionStorage.getItem( 'username' );
 
     // Send request to endpoint
-    const response = await fetch( `${API_URL}api/auth/verify-role?username=${username}` );
+    const response = await fetch( `${API_URL}/auth/verify-role?username=${username}` );
 
     // Check if the response is successful
     if ( !response.ok ) {
