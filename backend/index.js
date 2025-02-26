@@ -38,4 +38,4 @@ app.get( '*', ( req, res ) => {
 });
 
 // Start server
-app.listen( PORT, HOST => console.log( `Server is running on port ${PORT}` ) );
+app.listen( PORT, HOST, () => console.log( `Server is running at ${HOST}:${PORT}` ) );
