@@ -89,8 +89,6 @@ exports.verifyRole = async (req, res) => {
     // Set param and query variables
     const { username } = req.query;
 
-    console.log( username );
-
     try {
 
         // If the file exists, read and parse the data
