@@ -15,6 +15,7 @@ const adminRoutes = require( './routes/adminRoutes' );
 // Setup express app
 const app = express();
 const PORT = process.env.PORT || 8000;
+const HOST = process.env.PROXY || '127.0.0.1';
 
 // Middleware to enable CORS and parse JSON request bodies
 app.use( cors() );
@@ -37,4 +38,4 @@ app.get( '*', ( req, res ) => {
 });
 
 // Start server
-app.listen( PORT, () => console.log( `Server is running on port ${PORT}` ) );
+app.listen( PORT, HOST => console.log( `Server is running on port ${PORT}` ) );
